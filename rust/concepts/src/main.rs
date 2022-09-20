@@ -3,6 +3,16 @@ fn type_of<T>(_: &T) {
 }
 fn main() {
 
+    println!("--------------------------VARIABLES--------------------------");
+    variables();
+    println!("--------------------------DATA TYPES-------------------------");
+    data_types();
+    println!("---------------------------FUNCTIONS-------------------------");
+    functions();
+
+}
+
+fn variables() {
     // mutable variables
     let mut x = 5;
     println!("The value of x is: {x}");
@@ -24,7 +34,9 @@ fn main() {
     }
 
     println!("The value of y out of the inner scope is: {y}");
+}
 
+fn data_types() {
     // Data types
     // Rust is a statically typed languague, which means that it must know the types of all variables at compile time
 
@@ -38,7 +50,7 @@ fn main() {
 
     // >>Interger Types
     // The interger types can be signed or unisigned, from 8 to 128 bits, or arch.
-    // The signed or unsigned refers to math signals, for example, a negative number, shoulb be of signed type.
+    // The signed or unsigned refers to math signals, for example, a negative number, should be of signed type.
     // The arch time is related to the architeture of the system that will run the code, can be 64 or 32.
 
     let negative_128_number: i128 = "-42".parse().expect("Not a number!");
@@ -82,10 +94,45 @@ fn main() {
     // >Compound Types
     // Compound types can group multiple values into one type. It`s the same idea of dictionary in python.
     // Rust has two primitive compound types: tuples and arrays.
+    // >> Tuples:
     let tup: (i32, f64, u8, &str) = (500, 6.4, 1, "oi");
     type_of(&tup);
     let (a, b, c, d) = tup;
     println!("The value of d is: {d}");
+    println!("The value of b is {b}");
+    
+    // We can access a tuple element directly by using a period (.) followed by the index of the value.
 
-        
+    let five_hundred = tup.0;
+    println!("The element 0 of tuple is {five_hundred}");
+
+    // >> Array
+    // Different from tuple, every item of an array should have the same type.
+    // You write a array type using square brackets with the type of each element, a semicolon and then the number of elements in the array
+    let array: [i32; 5] = [1, 2, 3, 4, 5];
+    let first_element_of_array = array[0];
+    println!("The element 0 of array is {first_element_of_array}")
+}
+
+fn functions(){
+    // Functions
+    fn main(){
+        print_value(5, "h");
+    }
+
+    // in function signatures, you must declare the type of each parameter.
+    fn print_value(value: i32, timestamp: &str) {
+        println!("The meeting starts at {value}{timestamp}.");
+        let next = next_hour(value);
+        println!("The meeting ends at {next}{timestamp}.")
+    }
+
+    // function return type ->
+    // the ; env at the end of line in a statement returns a None value, so in
+    // functions without ; return the value of function
+    fn next_hour(x: i32) -> i32 {
+        x + 1
+    }
+
+    main();
 }
