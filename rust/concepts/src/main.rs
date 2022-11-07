@@ -9,7 +9,8 @@ fn main() {
     data_types();
     println!("---------------------------FUNCTIONS-------------------------");
     functions();
-
+    println!("--------------------------CONTROL-FLOW-----------------------");
+    control_flow();
 }
 
 fn variables() {
@@ -132,6 +133,23 @@ fn functions(){
     // functions without ; return the value of function
     fn next_hour(x: i32) -> i32 {
         x + 1
+    }
+
+    main();
+}
+
+fn control_flow(){
+    fn main(){
+        expressions();
+    }
+
+    fn expressions(){
+        let number = 3;
+        if number < 5 {
+            println!("condition was true");
+        } else {
+            println!("condition was false");
+        }
     }
 
     main();
